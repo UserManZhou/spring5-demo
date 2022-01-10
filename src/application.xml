@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  配置User类的配置  -->
+    <!--    <bean id="user" class="com.gec.spring.entity.User">-->
+    <!--        &lt;!&ndash;   注入对象属性值     &ndash;&gt;-->
+    <!--&lt;!&ndash;        <property name="username" value="小张"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <property name="password" value="12345"/>&ndash;&gt;-->
+    <!--        <constructor-arg name="username" value="小航" type="java.lang.String"/>-->
+    <!--        <constructor-arg name="password" type="java.lang.String" value="123456"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="user" class="com.gec.spring.entity.User" p:username="小航" p:password="123456"/>-->
+
+    <bean id="user" class="com.gec.spring.entity.User">
+        <property name="username">
+            <null></null>
+        </property>
+        <property name="password">
+            <value><![CDATA[<<123456>>]]></value>
+        </property>
+    </bean>
+
+    <bean id="UserService" class="com.gec.spring.service.serviceimpl.UserServiceImpl">
+        <property name="user" ref="user"/>
+    </bean>
+
+    <bean id="dept" class="com.gec.spring.entity.Dept">
+<!--        <property name="name_dept" value="销售"></property>-->
+    </bean>
+
+
+    <bean id="emp" class="com.gec.spring.entity.Employee">
+        <property name="name_e" value="xiaozhang"></property>
+        <!--        <property name="dept">-->
+        <!--            <bean id="dept" class="com.gec.spring.entity.Dept">-->
+        <!--                <property name="name_dept" value="研究部"/>-->
+        <!--            </bean>-->
+        <!--        </property>-->
+        <property name="dept" ref="dept"></property>
+        <property name="dept.name_dept" value="销售补"></property>
+    </bean>
+
+
+
+
+</beans>
